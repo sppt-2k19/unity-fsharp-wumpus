@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F4B7611-C2FA-443F-882B-FA9E107EE995}</ProjectGuid>
+    <ProjectGuid>{1AF629F1-EAE1-46F4-B2FC-AE7B58D73AE5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>UFSharp</RootNamespace>
     <AssemblyName>UFSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -32,26 +32,27 @@
     <OtherFlags>--warnon:1182</OtherFlags>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="FSharp.Core, Version=4.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\..\..\.local\share\JetBrains\Toolbox\apps\Rider\ch-0\182.4231.348\plugins\rider-fsharp\dotnet\FSharp.Core.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="FSharp.Core">
+      <HintPath>..\packages\FSharp.Core.4.5.2\lib\net45\FSharp.Core.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\Unity\Hub\Editor\2018.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\Unity\Hub\Editor\2018.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\Unity\Hub\Editor\2018.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent.fs" />
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Default.fs" />
     <Compile Include="Library.fs" />
+    <Compile Include="WorldGenerator.fs" />
+    <Compile Include="Wumpus.fs" />
     <None Include="Script.fsx" />
     <Content Include="packages.config" />
   </ItemGroup>

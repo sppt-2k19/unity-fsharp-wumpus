@@ -1,18 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UFSharp;
 
 public class fscomp_agent : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Agent agent;
+    
+    void Awake()
+    {
+        agent = new Agent(gameObject);
+    }
+    
     void Start()
     {
-        
+        agent.Start();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
+        agent.Update();
         
     }
 }

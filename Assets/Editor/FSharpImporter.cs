@@ -11,14 +11,16 @@ using Debug = UnityEngine.Debug;
 public class FSharpImporter : AssetPostprocessor
 {
 
-	private static string projectLocation = "FSharp/FSharp.sln";
-	private static string dllLocation = "FSharp/bin/Debug/UFSharp.dll";
+	// /home/bolhuis/Projects/wumpus-fsharp/FSharp/UFSharp/bin/Debug/
+	private static string projectLocation = "FSharp/UFSharp/FSharp.sln";
+	private static string dllLocation = "FSharp/UFSharp/bin/Debug/UFSharp.dll";
 	private static string dllTarget = "Assets/Libs/UFSharp.dll";
 	private static string buildTool = "msbuild";
 
 
-	private const string MenuItemRecompile = "FSharp/Recompile F#";
-	private const string MenuItemAutoToggle = "FSharp/Enable Autocompile";
+	private const string MenuItemRecompile = "UFSharp/Recompile F#";
+	private const string MenuItemAutoToggle = "UFSharp/Enable Autocompile";
+	private const string MenuItemCopyOnly = "UFSharp/Copy DLL only";
 	private static bool autoRecompileEnabled;
 
 	static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
@@ -74,5 +76,14 @@ public class FSharpImporter : AssetPostprocessor
 		EditorPrefs.SetBool(MenuItemAutoToggle, enabled);
 		autoRecompileEnabled = enabled;
 		
+	}
+
+	[MenuItem(MenuItemCopyOnly)]
+	private static void CopyDll()
+	{
+		var dir = Directory.GetCurrentDirectory();
+        var target = Path.Combine(dir, dllTarget);
+        FileUtil.DeleteFileOrDirectory(target);
+        FileUtil.CopyFileOrDirectory(Path.Combine(dir, dllLocation), target);
 	}
 }
