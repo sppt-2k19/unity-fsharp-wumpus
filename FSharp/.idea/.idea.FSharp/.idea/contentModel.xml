@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2018.2/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2018.2/system/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_FSharp.1670569265.00" t="ExcludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
-      <e p="FSharp.sln" t="IncludeFlat" />
-      <e p="UFSharp" t="IncludeRecursive">
-        <e p="Agent.fs" t="Include" />
-        <e p="AssemblyInfo.fs" t="Include" />
-        <e p="Default.fs" t="Include" />
-        <e p="Library.fs" t="Include" />
-        <e p="Script.fsx" t="Include" />
-        <e p="UFSharp.fsproj" t="IncludeRecursive" />
-        <e p="WorldGenerator.fs" t="Include" />
-        <e p="Wumpus.fs" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="obj" t="ExcludeRecursive" />
-        <e p="packages.config" t="Include" />
-      </e>
+    <e p="C:\Users\zhex\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\zhex\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_FSharp.220283735.00" t="ExcludeRecursive" />
+    <e p="C:\Users\zhex\Documents\Projects\wumpus-fsharp\FSharp" t="IncludeRecursive">
+      <e p="AssemblyInfo.fs" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="FSharp.fsproj" t="IncludeRecursive" />
+      <e p="Library.fs" t="Include" />
       <e p="packages" t="ExcludeRecursive" />
+      <e p="packages.config" t="Include" />
+      <e p="Script.fsx" t="Include" />
     </e>
   </component>
 </project>

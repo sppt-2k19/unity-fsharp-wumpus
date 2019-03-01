@@ -1,4 +1,4 @@
-
+.idea/
 # Created by https://www.gitignore.io/api/unity,rider,fsharp
 # Edit at https://www.gitignore.io/?templates=unity,rider,fsharp
 
@@ -107,7 +107,7 @@ ExportedObj/
 .consulo/
 *.csproj
 *.unityproj
-*.sln
+#*.sln #Keep .sln for F# projects
 *.tmp
 *.userprefs
 *.pidb

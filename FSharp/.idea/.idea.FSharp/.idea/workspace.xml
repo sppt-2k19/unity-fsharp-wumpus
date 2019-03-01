@@ -19,90 +19,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-1694419814">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="7" />
-          <entry key="project.open.time.15" value="1" />
-          <entry key="project.open.time.16" value="2" />
-          <entry key="project.open.time.17" value="3" />
-          <entry key="project.open.time.19" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="8" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="cs" value="4" />
-          <entry key="fs" value="1" />
-          <entry key="sln" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="C#" value="4" />
-          <entry key="F#" value="1" />
-          <entry key="Solution File" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="cs" value="1683" />
-          <entry key="fs" value="1851" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="C#" value="1683" />
-          <entry key="F#" value="1851" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="-869043166">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.16" value="2" />
-          <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.61" value="1" />
-          <entry key="project.opened" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="cs" value="2" />
-          <entry key="desktop" value="1" />
-          <entry key="fs" value="6" />
-          <entry key="fsx" value="2" />
-          <entry key="sln" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="C#" value="2" />
-          <entry key="F#" value="6" />
-          <entry key="F# Script" value="2" />
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Solution File" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="cs" value="304" />
-          <entry key="fs" value="7384" />
-          <entry key="fsx" value="39" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="C#" value="304" />
-          <entry key="F#" value="7384" />
-          <entry key="F# Script" value="39" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -110,9 +26,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="16" selection-start-column="16" selection-end-column="16" />
-              <folding>
-                <marker date="1551343435482" expanded="true" signature="31:60" ph=") =  ..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -123,8 +36,8 @@
             <state relative-caret-position="147">
               <caret line="7" selection-start-line="7" selection-end-line="7" />
               <folding>
-                <marker date="1551344399665" expanded="true" signature="0:114" ph="// Learn more about F## at http://fsharp.org. See the 'F## Tutorial' project ..." />
-                <marker date="1551344399665" expanded="true" signature="122:151" ph="&quot;Library.fs&quot; ..." />
+                <marker date="1551391386658" expanded="true" signature="0:114" ph="// Learn more about F## at http://fsharp.org. See the 'F## Tutorial' project ..." />
+                <marker date="1551391386658" expanded="true" signature="122:151" ph="&quot;Library.fs&quot; ..." />
               </folding>
             </state>
           </provider>
@@ -132,29 +45,31 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UFSharp/AssemblyInfo.fs">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/UFSharp/Agent.fs">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="84">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
               <folding>
-                <marker date="1551343237456" expanded="false" signature="37:127" ph="..." />
-                <marker date="1551343237456" expanded="true" signature="129:316" ph="// General Information about an assembly is controlled through the following  ..." />
-                <marker date="1551343237456" expanded="true" signature="329:1443" ph="AssemblyTitle(&quot;UFSharp&quot;)&gt;] ..." />
-                <marker date="1551343237456" expanded="true" signature="635:845" ph="// Setting ComVisible to false makes the types in this assembly not visible  ..." />
-                <marker date="1551343237456" expanded="true" signature="1024:1359" ph="// Version information for an assembly consists of the following four values: ..." />
+                <marker date="1551391386647" expanded="true" signature="47:730" ph="g:GameObject) as self = ..." />
+                <marker date="1551391386647" expanded="true" signature="301:564" ph=" = ..." />
+                <marker date="1551391386647" expanded="true" signature="415:564" ph=" then ..." />
+                <marker date="1551391386647" expanded="true" signature="612:730" ph=" = ..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UFSharp/Agent.fs">
+        <entry file="file://$PROJECT_DIR$/Script.fsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+            <state relative-caret-position="105">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
               <folding>
-                <marker date="1551348505014" expanded="true" signature="47:730" ph="g:GameObject) as self = ..." />
-                <marker date="1551348505014" expanded="true" signature="301:564" ph=" = ..." />
-                <marker date="1551348505014" expanded="true" signature="415:564" ph=" then ..." />
-                <marker date="1551348505014" expanded="true" signature="612:730" ph=" = ..." />
+                <marker date="1551391386644" expanded="true" signature="0:114" ph="// Learn more about F## at http://fsharp.org. See the 'F## Tutorial' project ..." />
               </folding>
             </state>
           </provider>
@@ -165,31 +80,17 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
               <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding>
-                <marker date="1551348981725" expanded="true" signature="56:235" ph="g:GameObject) as self = ..." />
-                <marker date="1551348981725" expanded="true" signature="171:188" ph=" = ..." />
-                <marker date="1551348981725" expanded="true" signature="218:235" ph=" = ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/UFSharp/Default.fs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <marker date="1551348898856" expanded="true" signature="49:228" ph="g:GameObject) as self = ..." />
-                <marker date="1551348898856" expanded="true" signature="164:181" ph=" = ..." />
-                <marker date="1551348898856" expanded="true" signature="211:228" ph=" = ..." />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FSharp.sln">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/UFSharp/Default.fs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -198,19 +99,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/UFSharp/Script.fsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UFSharp/AssemblyInfo.fs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UFSharp/WorldGenerator.fs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UFSharp/Default.fs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/98BD0995-96F2-47BF-9CE9-C28401E3D9B6/89/8cfd4440/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Assets/fscomp_agent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UFSharp/Wumpus.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Script.fsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library.fs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UFSharp/Library.fs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Script.fsx" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5BF358E7-35BE-4864-8728-2A37CB3BCE80/80/53301426/Stack`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Assets/Editor/FSharpImporter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Assets/fscomp_agent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UFSharp/AssemblyInfo.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UFSharp/Script.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UFSharp/Wumpus.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UFSharp/WorldGenerator.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UFSharp/Library.fs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UFSharp/Agent.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UFSharp/Default.fs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -228,13 +127,7 @@
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="189" />
     <option name="y" value="178" />
     <option name="width" value="1332" />
@@ -246,6 +139,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AssemblyExplorer" />
       <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
@@ -257,7 +151,13 @@
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="FSharp" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="UFSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="References" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="FSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="References" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Assemblies" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -270,8 +170,8 @@
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Unity/Hub/Editor/2018.3.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/Managed/UnityEngine.dll" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -287,11 +187,13 @@
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <method v="2" />
@@ -323,11 +225,13 @@
       <workItem from="1551342178529" duration="2177000" />
       <workItem from="1551344975419" duration="1340000" />
       <workItem from="1551346871335" duration="13891000" />
+      <workItem from="1551427454592" duration="490000" />
+      <workItem from="1551430269683" duration="78000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29872000" />
+    <option name="totallyTimeSpent" value="30440000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -339,11 +243,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="189" y="178" width="1332" height="824" extended-state="0" />
+    <frame x="-8" y="22" width="1936" height="1186" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.41057542" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28624734" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -359,11 +265,14 @@
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" weight="0.32949087" />
       <window_info anchor="bottom" id="Build" order="14" weight="0.32853025" />
+      <window_info anchor="bottom" id="Performance Profiler" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Errors In Solution" order="3" />
       <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="6" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,9 +280,6 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
@@ -390,13 +296,8 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/98BD0995-96F2-47BF-9CE9-C28401E3D9B6/89/8cfd4440/MonoBehaviour.cs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/98BD0995-96F2-47BF-9CE9-C28401E3D9B6/89/8cfd4440/MonoBehaviour.cs" />
     <entry file="file://$PROJECT_DIR$/../Assets/FSComponent.cs" />
-    <entry file="file://$PROJECT_DIR$/Script.fsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Library.fs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -418,78 +319,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.local/share/applications/jetbrains-rider.desktop">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UFSharp/Script.fsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <marker date="1551344399665" expanded="true" signature="0:114" ph="// Learn more about F## at http://fsharp.org. See the 'F## Tutorial' project ..." />
-            <marker date="1551344399665" expanded="true" signature="122:151" ph="&quot;Library.fs&quot; ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UFSharp/AssemblyInfo.fs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1551343237456" expanded="false" signature="37:127" ph="..." />
-            <marker date="1551343237456" expanded="true" signature="129:316" ph="// General Information about an assembly is controlled through the following  ..." />
-            <marker date="1551343237456" expanded="true" signature="329:1443" ph="AssemblyTitle(&quot;UFSharp&quot;)&gt;] ..." />
-            <marker date="1551343237456" expanded="true" signature="635:845" ph="// Setting ComVisible to false makes the types in this assembly not visible  ..." />
-            <marker date="1551343237456" expanded="true" signature="1024:1359" ph="// Version information for an assembly consists of the following four values: ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FSharp.sln">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UFSharp/Library.fs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
-          <folding>
-            <marker date="1551343435482" expanded="true" signature="31:60" ph=") =  ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UFSharp/Agent.fs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding>
-            <marker date="1551348505014" expanded="true" signature="47:730" ph="g:GameObject) as self = ..." />
-            <marker date="1551348505014" expanded="true" signature="301:564" ph=" = ..." />
-            <marker date="1551348505014" expanded="true" signature="415:564" ph=" then ..." />
-            <marker date="1551348505014" expanded="true" signature="612:730" ph=" = ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UFSharp/WorldGenerator.fs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <marker date="1551348981725" expanded="true" signature="56:235" ph="g:GameObject) as self = ..." />
-            <marker date="1551348981725" expanded="true" signature="171:188" ph=" = ..." />
-            <marker date="1551348981725" expanded="true" signature="218:235" ph=" = ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5BF358E7-35BE-4864-8728-2A37CB3BCE80/80/53301426/Stack`1.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.local/share/applications/jetbrains-rider.desktop" />
+    <entry file="file://$PROJECT_DIR$/FSharp.sln" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5BF358E7-35BE-4864-8728-2A37CB3BCE80/80/53301426/Stack`1.cs" />
     <entry file="file://$PROJECT_DIR$/UFSharp/Wumpus.fs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -523,13 +355,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UFSharp/Default.fs">
+    <entry file="file://$PROJECT_DIR$/UFSharp/Library.fs">
       <provider selected="true" editor-type-id="text-editor">
         <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UFSharp/Script.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
           <folding>
-            <marker date="1551348898856" expanded="true" signature="49:228" ph="g:GameObject) as self = ..." />
-            <marker date="1551348898856" expanded="true" signature="164:181" ph=" = ..." />
-            <marker date="1551348898856" expanded="true" signature="211:228" ph=" = ..." />
+            <marker date="1551391386658" expanded="true" signature="0:114" ph="// Learn more about F## at http://fsharp.org. See the 'F## Tutorial' project ..." />
+            <marker date="1551391386658" expanded="true" signature="122:151" ph="&quot;Library.fs&quot; ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UFSharp/AssemblyInfo.fs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UFSharp/WorldGenerator.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UFSharp/Default.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Script.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <marker date="1551391386644" expanded="true" signature="0:114" ph="// Learn more about F## at http://fsharp.org. See the 'F## Tutorial' project ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UFSharp/Agent.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <marker date="1551391386647" expanded="true" signature="47:730" ph="g:GameObject) as self = ..." />
+            <marker date="1551391386647" expanded="true" signature="301:564" ph=" = ..." />
+            <marker date="1551391386647" expanded="true" signature="415:564" ph=" then ..." />
+            <marker date="1551391386647" expanded="true" signature="612:730" ph=" = ..." />
           </folding>
         </state>
       </provider>
