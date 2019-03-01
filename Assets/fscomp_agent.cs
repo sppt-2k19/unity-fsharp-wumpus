@@ -10,6 +10,7 @@ public class fscomp_agent : MonoBehaviour
     void Awake()
     {
         agent = new Agent(gameObject);
+        
     }
     
     void Start()
