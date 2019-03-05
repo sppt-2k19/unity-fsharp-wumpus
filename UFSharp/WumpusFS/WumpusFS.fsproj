@@ -32,27 +32,35 @@
         <OtherFlags>--warnon:1182</OtherFlags>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="mscorlib" />
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Numerics" />
-        <Reference Include="FSharp.Core">
-            <HintPath>..\packages\FSharp.Core.4.5.2\lib\net45\FSharp.Core.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\..\..\Program Files\Unity\Hub\Editor\2018.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
-        </Reference>
-        <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\..\..\..\Program Files\Unity\Hub\Editor\2018.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-    <ItemGroup>
         <Compile Include="Agent.fs" />
         <Compile Include="AssemblyInfo.fs" />
         <Compile Include="Library.fs" />
         <Compile Include="Wumpus.fs" />
         <None Include="Script.fsx" />
         <Content Include="packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="FSharp.Core, Version=4.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+        <HintPath>import\FSharp.Core.dll</HintPath>
+      </Reference>
+      <Reference Include="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <HintPath>import\mscorlib.dll</HintPath>
+      </Reference>
+      <Reference Include="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <HintPath>import\System.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <HintPath>import\System.Core.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <HintPath>import\System.Numerics.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>import\UnityEngine.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>import\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
     </ItemGroup>
     <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
 </Project>

@@ -119,12 +119,12 @@ type CaveWorld() as self =
     let mutable Pits = List.Empty
     
     let OnMove = new Event<Vector2>()
-    let OnWumpusEncountered = new Event()
-    let OnPitEncountered = new Event()
-    let OnTreasureEncountered = new Event()
-    let OnBreezePercepted = new Event()
-    let OnStenchPercepted = new Event()
-    let OnGoalComplete = new Event()
+//    let OnWumpusEncountered = new Event()
+//    let OnPitEncountered = new Event()
+//    let OnTreasureEncountered = new Event()
+//    let OnBreezePercepted = new Event()
+//    let OnStenchPercepted = new Event()
+//    let OnGoalComplete = new Event()
     
     member this.WorldHeight = 4
     member this.WorldWidth = 4
