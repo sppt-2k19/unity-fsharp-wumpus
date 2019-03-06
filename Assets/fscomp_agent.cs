@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UFSharp;
+using WumpusFS;
 
 public class fscomp_agent : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class fscomp_agent : MonoBehaviour
     
     void Start()
     {
-        agent.Start();
+        //agent.Start();
     }
     
     void Update()

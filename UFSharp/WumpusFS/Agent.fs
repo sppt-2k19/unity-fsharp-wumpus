@@ -8,7 +8,8 @@ type Agent(g:GameObject) as self =
     let mutable spent:float32 = 0.0f
     let mutable dur = 0.0f
     
-    //member this.Start() = 
+    member this.Start() =
+        Debug.Log ""
        
     member this.Update() =
         spent <- spent + Time.deltaTime
