@@ -124,13 +124,13 @@ namespace WumpusFS.Wumpus
         let mutable Wumpi = List.Empty
         let mutable Pits = List.Empty
         
-        let OnMove = new Event<Vector2>()
-        let OnWumpusEncountered = new Event<unit>()
-        let OnPitEncountered = new Event<unit>()
-        let OnTreasureEncountered = new Event<unit>()
-        let OnBreezePercepted = new Event<unit>()
-        let OnStenchPercepted = new Event<unit>()
-        let OnGoalComplete = new Event<unit>()
+        member this.OnMove = new Event<Vector2>()
+        member this.OnWumpusEncountered = new Event<unit>()
+        member this.OnPitEncountered = new Event<unit>()
+        member this.OnTreasureEncountered = new Event<unit>()
+        member this.OnBreezePercepted = new Event<unit>()
+        member this.OnStenchPercepted = new Event<unit>()
+        member this.OnGoalComplete = new Event<unit>()
         
         
         member this.PitAt pos =
@@ -156,7 +156,7 @@ namespace WumpusFS.Wumpus
             
         member this.Reset() =
             this.Cat.FoundGold <- false
-            this.Cat.ClearTrace()
+            this.Cat.ClearTrace() |> ignore
         
         member this.Initialize(wumpi, pits, gold) =
             Wumpi <- wumpi
@@ -168,15 +168,15 @@ namespace WumpusFS.Wumpus
         member this.Iterate() =
             let agentMove = this.Cat.WhereIWannaGo()
             this.Cat.CurrentPosition <- agentMove
-            OnMove.Trigger(agentMove)
+            this.OnMove.Trigger(agentMove)
             
             if this.Cat.FoundGold && Vec2.At this.Cat.CurrentPosition Vector2.zero then
-                OnGoalComplete.Trigger()
+                this.OnGoalComplete.Trigger()
                 
             if this.WumpusAt this.Cat.CurrentPosition then
-                OnWumpusEncountered.Trigger()
+                this.OnWumpusEncountered.Trigger()
             elif this.PitAt this.Cat.CurrentPosition then
-                OnPitEncountered.Trigger()
+                this.OnPitEncountered.Trigger()
                 
             //let percepts = GeneratePer
             

@@ -107,7 +107,6 @@ ExportedObj/
 .consulo/
 *.csproj
 *.unityproj
-#*.sln #Keep .sln for F# projects
 *.tmp
 *.userprefs
 *.pidb

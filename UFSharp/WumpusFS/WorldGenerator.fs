@@ -5,6 +5,10 @@ namespace WumpusFS.WG
     open System.Collections.Generic
     open UnityEngine
     open UnityEngine
+    open UnityEngine
+    open UnityEngine
+    open UnityEngine
+    open UnityEngine
     open WumpusFS
     open WumpusFS.Wumpus
 
@@ -16,6 +20,8 @@ namespace WumpusFS.WG
 
     type UnityWorldGen() =
         inherit MonoBehaviour()
+        
+        let numberOfIterations = 10
         
         let mutable world = new CaveWorld()
         
@@ -29,11 +35,18 @@ namespace WumpusFS.WG
         let mutable WorldGameObject:GameObject = null
         
         [<SerializeField>]
-        let mutable YPosition:GameObject = null
+        let mutable YPosition = 0.0f
         
         
         let mutable WumpusPrefabs = new Dictionary<string, GameObject>()
         let mutable WumpusSounds = new Dictionary<string, AudioClip>()
+        
+        let mutable iterations = 0
+        let mutable comment = ""
+        
+        let mutable UpdateTimer = 0.0f
+        let mutable UpdateTimeSecs = 1.0f
+        let mutable iterationNumber = 0
         
         [<DefaultValue>] val mutable WumpusPositions:List<Vector2>
         [<DefaultValue>] val mutable PitPositions:List<Vector2>
@@ -47,6 +60,7 @@ namespace WumpusFS.WG
         
         [<DefaultValue>] val mutable MoveAudioSrc:AudioSource
         [<DefaultValue>] val mutable EffectsAudioSrc:AudioSource
+        
         
         
         let mutable _gameRunning = false
@@ -67,10 +81,17 @@ namespace WumpusFS.WG
                     platform.name <- sprintf "(%d,%d)" i j
                     let pos = new Vector2(float32 i, float32 j)
                     
-                    let x = WumpusPrefabs.["Treasure"]
                     if Vec2.At pos world.Gold then
-                        this.Treasure <- (downcast GameObject.Instantiate(WumpusPrefabs.["Treasure"], new Vector3(float32 i,float32 YPosition, float32 j), Quaternion.Euler(0.0f, 180.0f, 0.0f), WorldGameObject.transform) : GameObject)
-                    //elif world.PitAt 
+                        this.Treasure <- (downcast GameObject.Instantiate(WumpusPrefabs.["Treasure"], new Vector3(float32 i, YPosition, float32 j), Quaternion.Euler(0.0f, 180.0f, 0.0f), WorldGameObject.transform) : GameObject)
+                    elif world.PitAt pos then
+                        GameObject.Instantiate(WumpusPrefabs.["Pit"], new Vector3(float32 i, YPosition, float32 j), Quaternion.Euler(0.0f, 180.0f, 0.0f)) |> ignore
+                    elif world.WumpusAt pos then
+                        GameObject.Instantiate(WumpusPrefabs.["Wumpus"], new Vector3(float32 i, YPosition, float32 j), Quaternion.Euler(0.0f, 180.0f, 0.0f)) |> ignore
+        
+        member this.MoveAgent(newPos, moveDuration) =
+            let moveDuration = defaultArg moveDuration 1.0f
+            this._agent.SetLerpPos(newPos, moveDuration)
+            
             
             
             
@@ -91,10 +112,60 @@ namespace WumpusFS.WG
         member this.Start() =
             let mode = if Application.isEditor then "editor" else "release"
             world.Initialize(List.ofSeq this.WumpusPositions, List.ofSeq this.PitPositions, this.GoldPosition)
+            this.CreateWorldPlatform()
+            this._agent <- (downcast GameObject.Instantiate(WumpusPrefabs.["Agent"],
+                                                            new Vector3(float32 0, YPosition, float32 0),
+                                                            Quaternion.Euler(0.0f, 180.0f, 0.0f))
+                                                            : GameObject).GetComponent<Agent>()
+            this.EffectsAudioSrc <- this._agent.GetComponent<AudioSource>()
             
-        
+            world.OnBreezePercepted.Publish.Add (fun () -> this.PlaySound("Breeze"))
+            world.OnMove.Publish.Add (fun pos ->
+                let newPos = new Vector3(pos.x, this._agent.transform.position.y, pos.y)
+                this._agent.SetLerpPos(newPos)
+                this.PlaySound("Move", false))
+            world.OnPitEncountered.Publish.Add (fun () ->
+                Object.Destroy this._agent
+                this.PlaySound("Pit")
+                _gameRunning <- false)
+            world.OnStenchPercepted.Publish.Add (fun () -> this.PlaySound("Stench"))
+            world.OnTreasureEncountered.Publish.Add (fun () ->
+                Object.Destroy this.Treasure
+                this.PlaySound("Gold"))
+            world.OnWumpusEncountered.Publish.Add (fun () ->
+                Object.Destroy this._agent
+                this.PlaySound("Wumpus")
+                _gameRunning <- false)
+            world.OnGoalComplete.Publish.Add (fun () ->
+                this.PlaySound "Goal"
+                world.Reset()
+                this.Treasure <- (downcast GameObject.Instantiate(WumpusPrefabs.["Treasure"],
+                                                        new Vector3(this.GoldPosition.x, YPosition, this.GoldPosition.y),
+                                                        Quaternion.Euler(0.0f, 180.0f, 0.0f))
+                                                        : GameObject)
+                iterations <- iterations + 1
+                _gameRunning <- iterations < numberOfIterations
+                comment <- "reset")
+                
+            
+            
         member this.Update() =
-            Debug.Log YPosition
+            if _gameRunning then
+                if UpdateTimer > UpdateTimeSecs then
+                    let t = DateTime.UtcNow
+                    world.Iterate()
+                    UpdateTimer <- 0.0f
+                    let runTime = (DateTime.UtcNow.Subtract(t).TotalMilliseconds * 100000.0)
+                    //Log LogFile.WriteLine($"{iterationNumber};{t.Elapsed.TotalMilliseconds};{comment}");
+                    comment <- ""
+                    iterationNumber <- iterationNumber + 1
+                else
+                    UpdateTimer <- UpdateTimer + Time.deltaTime
+            else
+                ()  
+                
+            
+                
             
         
         

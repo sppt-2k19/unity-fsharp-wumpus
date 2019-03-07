@@ -14,10 +14,4 @@ public class WumpusEntry : MonoBehaviour
 //        _caveWorld.Initialize();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        
-    }
 }
