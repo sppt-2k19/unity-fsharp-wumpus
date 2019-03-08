@@ -12,6 +12,7 @@ namespace WumpusFS.WG
     open WumpusFS
     open WumpusFS.Wumpus
 
+    [<Serializable>]
     type SoundEffect =
         struct
             val Name:string
@@ -45,7 +46,7 @@ namespace WumpusFS.WG
         let mutable comment = ""
         
         let mutable UpdateTimer = 0.0f
-        let mutable UpdateTimeSecs = 1.0f
+        let mutable UpdateTimeSecs = 0.5f
         let mutable iterationNumber = 0
         
         [<DefaultValue>] val mutable WumpusPositions:List<Vector2>
@@ -56,15 +57,17 @@ namespace WumpusFS.WG
         [<DefaultValue>] val mutable Treasure:GameObject
         
         [<DefaultValue>] val mutable ObjectPrefabs:List<GameObject>
-        [<DefaultValue>] val mutable SoundEffects:List<SoundEffect>
+        [<DefaultValue>] val mutable SoundEffects:List<AudioClip>
         
         [<DefaultValue>] val mutable MoveAudioSrc:AudioSource
         [<DefaultValue>] val mutable EffectsAudioSrc:AudioSource
         
         
         
-        let mutable _gameRunning = false
+        let mutable _gameRunning = true
         
+            
+            
         //Local methods
         member this.PlaySound(soundName, ?specialEffect0:bool) =
             let specialEffect = defaultArg specialEffect0 false
@@ -104,9 +107,9 @@ namespace WumpusFS.WG
                 WumpusPrefabs.Add(p.name, p)
             
             for se in this.SoundEffects do
-                WumpusSounds.Add(se.Name, se.Sound)
+                WumpusSounds.Add(se.name, se)
                 
-            this.MoveAudioSrc = this.GetComponent<AudioSource>()
+            this.MoveAudioSrc <- this.GetComponent<AudioSource>()
         
         
         member this.Start() =
@@ -114,7 +117,7 @@ namespace WumpusFS.WG
             world.Initialize(List.ofSeq this.WumpusPositions, List.ofSeq this.PitPositions, this.GoldPosition)
             this.CreateWorldPlatform()
             this._agent <- (downcast GameObject.Instantiate(WumpusPrefabs.["Agent"],
-                                                            new Vector3(float32 0, YPosition, float32 0),
+                                                            new Vector3(0.0f, YPosition, 0.0f),
                                                             Quaternion.Euler(0.0f, 180.0f, 0.0f))
                                                             : GameObject).GetComponent<Agent>()
             this.EffectsAudioSrc <- this._agent.GetComponent<AudioSource>()
@@ -125,20 +128,27 @@ namespace WumpusFS.WG
                 this._agent.SetLerpPos(newPos)
                 this.PlaySound("Move", false))
             world.OnPitEncountered.Publish.Add (fun () ->
-                Object.Destroy this._agent
+                Object.Destroy this._agent.gameObject
                 this.PlaySound("Pit")
+                Debug.Log "Called Pit event"
                 _gameRunning <- false)
-            world.OnStenchPercepted.Publish.Add (fun () -> this.PlaySound("Stench"))
+            world.OnStenchPercepted.Publish.Add (fun () ->
+                this.PlaySound("Stench")
+                Debug.Log "Called Stench event"
+                )
             world.OnTreasureEncountered.Publish.Add (fun () ->
                 Object.Destroy this.Treasure
+                Debug.Log "Called treasure event"
                 this.PlaySound("Gold"))
             world.OnWumpusEncountered.Publish.Add (fun () ->
-                Object.Destroy this._agent
+                Object.Destroy this._agent.gameObject
                 this.PlaySound("Wumpus")
+                Debug.Log "Called Wum event"
                 _gameRunning <- false)
             world.OnGoalComplete.Publish.Add (fun () ->
                 this.PlaySound "Goal"
                 world.Reset()
+                Debug.Log "Called Goal event"
                 this.Treasure <- (downcast GameObject.Instantiate(WumpusPrefabs.["Treasure"],
                                                         new Vector3(this.GoldPosition.x, YPosition, this.GoldPosition.y),
                                                         Quaternion.Euler(0.0f, 180.0f, 0.0f))

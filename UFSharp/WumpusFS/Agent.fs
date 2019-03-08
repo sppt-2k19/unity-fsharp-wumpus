@@ -3,12 +3,12 @@ open UnityEngine
 
 type Agent() as self =
     inherit MonoBehaviour()
-    let mutable target = Vector3.one
+    let mutable target = new Vector3(0.0f, 1.35f, 0.0f)
     let mutable spent:float32 = 0.0f
     let mutable dur = 0.0f
     
     member this.Start() =
-        Debug.Log ""
+        ()
        
     member this.Update() =
         spent <- spent + Time.deltaTime

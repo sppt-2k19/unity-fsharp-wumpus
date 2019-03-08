@@ -43,10 +43,14 @@ namespace WumpusFS.Wumpus
         [<DefaultValue>] val mutable FoundGold:bool
         [<DefaultValue>] val mutable CurrentPosition:Vector2
         
-       
+        member this.PubKnowledge() =
+            KnowledgeOfPlaces
+        
         member this.TellMeAboutTheWorld(height, width) =
             WorldHeight <- height
             WorldWidth <- width
+            this.CurrentPosition <- new Vector2(0.0f, 0.0f)
+            KnowledgeOfPlaces.Add(Vector2.zero, Knowledge.New(false, false))
         
         member this.ClearTrace() =
             Trace.Clear()
@@ -54,6 +58,8 @@ namespace WumpusFS.Wumpus
             KnowledgeOfPlaces = new Dictionary<Vector2, Knowledge>();
         
         member this.PercieveCurrentPosition(percepts:Percepts) =
+                    
+                    
             PerceptedPlaces.[self.CurrentPosition] <- percepts
             KnowledgeOfPlaces.[self.CurrentPosition] <- new Knowledge();
             
@@ -65,9 +71,9 @@ namespace WumpusFS.Wumpus
                 if KnowledgeOfPlaces.ContainsKey(pos) then 
                     let knowledge = KnowledgeOfPlaces.[pos]
                     if not percepts.Stench && knowledge.MightHaveWumpus then
-                        knowledge.MightHaveWumpus <- false
+                        KnowledgeOfPlaces.[pos] <- Knowledge.New(false, knowledge.MightHavePit)
                     if not percepts.Breeze && knowledge.MightHavePit then 
-                        knowledge.MightHavePit <- false
+                        KnowledgeOfPlaces.[pos] <- Knowledge.New(knowledge.MightHaveWumpus, false)
                 else
                     KnowledgeOfPlaces.[pos] <- Knowledge.New(percepts.Breeze, percepts.Stench)
         
@@ -83,13 +89,18 @@ namespace WumpusFS.Wumpus
                 let placesIveBeen = Seq.where (fun p -> PerceptedPlaces.ContainsKey p) placesToGo
                 let newPlacesToGo = Seq.where (fun p -> PerceptedPlaces.ContainsKey p |> not) placesToGo
                 let safeNewPlacesToGo = Seq.where IKnowItIsSafe newPlacesToGo
+                let safePlacesToGo = Seq.where IKnowItIsSafe placesToGo
                 
-                if not (safeNewPlacesToGo |> Seq.isEmpty) then
+                if safeNewPlacesToGo |> Seq.isEmpty |> not then
                     let move = Seq.head safeNewPlacesToGo
                     Trace.Push move
                     move
+                elif safePlacesToGo |> Seq.isEmpty |> not then
+                    let move = Seq.head safePlacesToGo
+                    Trace.Push move
+                    move
                 else //Dangerous move
-                    let dangerousMove = if safeNewPlacesToGo |> Seq.isEmpty |> not then Seq.head newPlacesToGo else Seq.head placesToGo
+                    let dangerousMove = if newPlacesToGo |> Seq.isEmpty |> not then Seq.rev newPlacesToGo |> Seq.head else Seq.rev placesToGo |> Seq.head 
                     Trace.Push dangerousMove
                     dangerousMove
                     
@@ -124,13 +135,28 @@ namespace WumpusFS.Wumpus
         let mutable Wumpi = List.Empty
         let mutable Pits = List.Empty
         
-        member this.OnMove = new Event<Vector2>()
-        member this.OnWumpusEncountered = new Event<unit>()
-        member this.OnPitEncountered = new Event<unit>()
-        member this.OnTreasureEncountered = new Event<unit>()
-        member this.OnBreezePercepted = new Event<unit>()
-        member this.OnStenchPercepted = new Event<unit>()
-        member this.OnGoalComplete = new Event<unit>()
+        let _OnMove = new Event<Vector2>()
+        let _OnWumpusEncountered = new Event<unit>()
+        let _OnPitEncountered = new Event<unit>()
+        let _OnTreasureEncountered = new Event<unit>()
+        let _OnBreezePercepted = new Event<unit>()
+        let _OnStenchPercepted = new Event<unit>()
+        let _OnGoalComplete = new Event<unit>()
+        
+        member this.OnMove =
+            _OnMove
+        member this.OnWumpusEncountered =
+            _OnWumpusEncountered
+        member this.OnPitEncountered =
+            _OnPitEncountered
+        member this.OnTreasureEncountered =
+            _OnTreasureEncountered
+        member this.OnBreezePercepted =
+            _OnBreezePercepted
+        member this.OnStenchPercepted =
+            _OnStenchPercepted
+        member this.OnGoalComplete =
+            _OnGoalComplete
         
         
         member this.PitAt pos =
@@ -164,25 +190,41 @@ namespace WumpusFS.Wumpus
             this.Gold <- gold
             this.Cat <- new AgentCat()
             this.Cat.TellMeAboutTheWorld (this.WorldHeight, this.WorldWidth)
+            
+        let kPrinter ( know:Dictionary<Vector2, Knowledge> ) =
+            let mutable str = "Dict:\n"
+            for key in know.Keys do
+                let a = know.[key].MightHaveWumpus
+                let b = know.[key].MightHavePit
+                let s = sprintf "%s W:%b P:%b\n"  (key.ToString()) a b
+                str <- s + str
+            Debug.Log str
         
         member this.Iterate() =
+            this.Cat.PubKnowledge() |> kPrinter 
             let agentMove = this.Cat.WhereIWannaGo()
             this.Cat.CurrentPosition <- agentMove
-            this.OnMove.Trigger(agentMove)
+            this.OnMove.Trigger agentMove
             
             if this.Cat.FoundGold && Vec2.At this.Cat.CurrentPosition Vector2.zero then
-                this.OnGoalComplete.Trigger()
+                this.OnGoalComplete.Trigger(())
                 
             if this.WumpusAt this.Cat.CurrentPosition then
                 this.OnWumpusEncountered.Trigger()
             elif this.PitAt this.Cat.CurrentPosition then
                 this.OnPitEncountered.Trigger()
                 
-            //let percepts = GeneratePer
+            let percepts = this.GeneratePercepts()
+            if percepts.Breeze then
+                this.OnBreezePercepted.Trigger()
+            if percepts.Stench then
+                this.OnStenchPercepted.Trigger()
+            if percepts.Glitter then
+                this.OnTreasureEncountered.Trigger()
             
-        
-                    
+            this.Cat.PercieveCurrentPosition(percepts)        
             
+           
 
             
             
