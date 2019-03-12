@@ -3,6 +3,7 @@ namespace WumpusFS.Wumpus
     open System.Collections.Generic
     open UnityEngine
     open UnityEngine.Events
+    
 
     module Vec2 = 
         let At a b =
@@ -13,7 +14,9 @@ namespace WumpusFS.Wumpus
             val Stench:bool
             val Breeze:bool
             val Glitter:bool
-            new (stench:bool, breeze:bool, glitter:bool) = {Stench = stench; Breeze = breeze; Glitter = glitter}
+            val Position:Vector2
+            new (stench:bool, breeze:bool, glitter:bool) = {Stench = stench; Breeze = breeze; Glitter = glitter; Position = new Vector2(-1.0f, -1.0f)}
+            new (stench:bool, breeze:bool, glitter:bool, pos:Vector2) = {Stench = stench; Breeze = breeze; Glitter = glitter; Position = pos}
         end
         
     type Knowledge() as self =
@@ -50,32 +53,48 @@ namespace WumpusFS.Wumpus
             WorldHeight <- height
             WorldWidth <- width
             this.CurrentPosition <- new Vector2(0.0f, 0.0f)
-            KnowledgeOfPlaces.Add(Vector2.zero, Knowledge.New(false, false))
+            //KnowledgeOfPlaces.Add(Vector2.zero, Knowledge.New(false, false))
         
         member this.ClearTrace() =
             Trace.Clear()
             PerceptedPlaces <- new Dictionary<Vector2, Percepts>();
             KnowledgeOfPlaces = new Dictionary<Vector2, Knowledge>();
         
-        member this.PercieveCurrentPosition(percepts:Percepts) =
-                    
-                    
-            PerceptedPlaces.[self.CurrentPosition] <- percepts
-            KnowledgeOfPlaces.[self.CurrentPosition] <- new Knowledge();
+        member this.PercieveCurrentPosition(percepts:Percepts, v:Vector2) =
+            PerceptedPlaces.[this.CurrentPosition] <- percepts
+            KnowledgeOfPlaces.[this.CurrentPosition] <- new Knowledge()
             
-            self.FoundGold <- self.FoundGold || percepts.Glitter
+            let str = sprintf "|Cur:%s - JustMoved:%s - Breez:%b Pit:%b"
+                          <| this.CurrentPosition.ToString()
+                          <| percepts.Position.ToString()
+                          <| percepts.Breeze
+                          <| percepts.Stench
+                          
+            Debug.Log str
             
-            let newPlacesToGo = this.PossibleMoves()
+            this.FoundGold <- this.FoundGold || percepts.Glitter
+            
+            let newPlacesToGo = this.PossibleMoves() |> Seq.where (fun pos -> not (PerceptedPlaces.ContainsKey(pos)))
+            
+            //if Vec2.At this.CurrentPosition
             
             for pos in newPlacesToGo do
                 if KnowledgeOfPlaces.ContainsKey(pos) then 
                     let knowledge = KnowledgeOfPlaces.[pos]
-                    if not percepts.Stench && knowledge.MightHaveWumpus then
+                    if (not percepts.Stench) && knowledge.MightHaveWumpus then
+                        if Vec2.At pos (new Vector2(2.0f, 0.0f)) then
+                            Debug.Log("overriding pitboi ")
                         KnowledgeOfPlaces.[pos] <- Knowledge.New(false, knowledge.MightHavePit)
-                    if not percepts.Breeze && knowledge.MightHavePit then 
+                    if (not percepts.Breeze) && knowledge.MightHavePit then
+                        if Vec2.At pos (new Vector2(2.0f, 0.0f)) then
+                            let str = sprintf "Pos:%s - Cur:%s - Breeze:%b" (pos.ToString()) (this.CurrentPosition.ToString()) percepts.Breeze
+                            Debug.Log str
                         KnowledgeOfPlaces.[pos] <- Knowledge.New(knowledge.MightHaveWumpus, false)
                 else
-                    KnowledgeOfPlaces.[pos] <- Knowledge.New(percepts.Breeze, percepts.Stench)
+                    //Debug.LogError(sprintf "Overriding pos %s" (pos.ToString()))
+                    if Vec2.At pos (new Vector2(2.0f, 0.0f)) then
+                        Debug.Log "overriding pitboi nonexisting"
+                    KnowledgeOfPlaces.[pos] <- Knowledge.New(percepts.Stench, percepts.Breeze)
         
         member this.WhereIWannaGo():Vector2 =
             if self.FoundGold then
@@ -86,21 +105,23 @@ namespace WumpusFS.Wumpus
             else
                 //Find gold and kill wumpus
                 let placesToGo = this.PossibleMoves()
-                let placesIveBeen = Seq.where (fun p -> PerceptedPlaces.ContainsKey p) placesToGo
-                let newPlacesToGo = Seq.where (fun p -> PerceptedPlaces.ContainsKey p |> not) placesToGo
+                let newPlacesToGo = Seq.where (fun p -> not (PerceptedPlaces.ContainsKey p)) placesToGo
                 let safeNewPlacesToGo = Seq.where IKnowItIsSafe newPlacesToGo
                 let safePlacesToGo = Seq.where IKnowItIsSafe placesToGo
                 
                 if safeNewPlacesToGo |> Seq.isEmpty |> not then
+                    Debug.LogWarning "Safe new"
                     let move = Seq.head safeNewPlacesToGo
                     Trace.Push move
                     move
                 elif safePlacesToGo |> Seq.isEmpty |> not then
+                    Debug.LogWarning "Safe"
                     let move = Seq.head safePlacesToGo
                     Trace.Push move
                     move
                 else //Dangerous move
-                    let dangerousMove = if newPlacesToGo |> Seq.isEmpty |> not then Seq.rev newPlacesToGo |> Seq.head else Seq.rev placesToGo |> Seq.head 
+                    Debug.LogWarning "Dangerous move"
+                    let dangerousMove = if newPlacesToGo |> Seq.isEmpty |> not then newPlacesToGo |> Seq.head else placesToGo |> Seq.head 
                     Trace.Push dangerousMove
                     dangerousMove
                     
@@ -108,17 +129,17 @@ namespace WumpusFS.Wumpus
                     
         let IKnowItIsSafe(pos) =
             KnowledgeOfPlaces.ContainsKey(pos) && 
-            not KnowledgeOfPlaces.[pos].MightHaveWumpus && 
-            not KnowledgeOfPlaces.[pos].MightHavePit
-                    
-        
+            (not KnowledgeOfPlaces.[pos].MightHaveWumpus) && 
+            (not KnowledgeOfPlaces.[pos].MightHavePit)
+
+            
         member this.PossibleMoves() =
             let mutable positions = new List<Vector2>();
             
             if self.CurrentPosition.x > 0.0f then 
                 positions.Add(new Vector2((self.CurrentPosition.x - 1.0f), self.CurrentPosition.y))
                 
-            if self.CurrentPosition.x < float32 WorldHeight - 1.0f then 
+            if self.CurrentPosition.x < float32 WorldWidth - 1.0f then 
                 positions.Add(new Vector2((self.CurrentPosition.x + 1.0f), self.CurrentPosition.y))
                 
             if self.CurrentPosition.y > 0.0f then 
@@ -174,11 +195,21 @@ namespace WumpusFS.Wumpus
         [<DefaultValue>] val mutable Cat:AgentCat
         
         member this.GeneratePercepts() =
-            let neighbours = this.Cat.PossibleMoves() //Same as the C# implementation with GetNeighbours
-            new Percepts(
-                  neighbours |> Seq.exists (fun n -> this.PitAt n),
-                  neighbours |> Seq.exists (fun n -> this.WumpusAt n),
-                  Vec2.At this.Cat.CurrentPosition this.Gold && not this.Cat.FoundGold )
+            let neighbours = this.Cat.PossibleMoves() //Same as the C# implementation with GetNeighbours 
+            let wum = neighbours |> Seq.exists (fun n -> this.WumpusAt n)
+            let pit = neighbours |> Seq.exists (fun n -> this.PitAt n)
+            let np = new Percepts(
+                      wum,
+                      pit,
+                      Vec2.At this.Cat.CurrentPosition this.Gold && not this.Cat.FoundGold,
+                      this.Cat.CurrentPosition)
+                
+            let GetStr n =
+                let str = sprintf "Cur:%s :: %s -> Wum:%b (%b) Pit:%b(%b)" (this.Cat.CurrentPosition.ToString()) (n.ToString()) (this.WumpusAt n) wum (this.PitAt n)  pit
+                Debug.Log str
+                
+            Array.ForEach(neighbours.ToArray(), (fun n -> GetStr n))
+            np
             
         member this.Reset() =
             this.Cat.FoundGold <- false
@@ -197,7 +228,7 @@ namespace WumpusFS.Wumpus
                 let a = know.[key].MightHaveWumpus
                 let b = know.[key].MightHavePit
                 let s = sprintf "%s W:%b P:%b\n"  (key.ToString()) a b
-                str <- s + str
+                str <- str + s
             Debug.Log str
         
         member this.Iterate() =
@@ -214,15 +245,15 @@ namespace WumpusFS.Wumpus
             elif this.PitAt this.Cat.CurrentPosition then
                 this.OnPitEncountered.Trigger()
                 
-            let percepts = this.GeneratePercepts()
-            if percepts.Breeze then
+            let percept = this.GeneratePercepts()
+            if  percept.Breeze then
                 this.OnBreezePercepted.Trigger()
-            if percepts.Stench then
+            if  percept.Stench then
                 this.OnStenchPercepted.Trigger()
-            if percepts.Glitter then
+            if  percept.Glitter then
                 this.OnTreasureEncountered.Trigger()
             
-            this.Cat.PercieveCurrentPosition(percepts)        
+            this.Cat.PercieveCurrentPosition(percept, agentMove)
             
            
 

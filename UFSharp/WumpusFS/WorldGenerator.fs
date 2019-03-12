@@ -77,8 +77,8 @@ namespace WumpusFS.WG
         
         
         member this.CreateWorldPlatform() =
-            for i in 0 .. world.WorldHeight do
-                for j in 0 .. world.WorldWidth do
+            for i in 0 .. (world.WorldHeight - 1) do
+                for j in 0 .. (world.WorldWidth - 1) do 
                     let prefab = if i = 0 && j = 0 then DoorPrefab else PlatformPrefab
                     let platform = GameObject.Instantiate(prefab, new Vector3(float32 i, float32 0, float32 j), Quaternion.identity, WorldGameObject.transform)
                     platform.name <- sprintf "(%d,%d)" i j
@@ -130,25 +130,18 @@ namespace WumpusFS.WG
             world.OnPitEncountered.Publish.Add (fun () ->
                 Object.Destroy this._agent.gameObject
                 this.PlaySound("Pit")
-                Debug.Log "Called Pit event"
                 _gameRunning <- false)
-            world.OnStenchPercepted.Publish.Add (fun () ->
-                this.PlaySound("Stench")
-                Debug.Log "Called Stench event"
-                )
+            world.OnStenchPercepted.Publish.Add (fun () -> this.PlaySound("Stench"))
             world.OnTreasureEncountered.Publish.Add (fun () ->
                 Object.Destroy this.Treasure
-                Debug.Log "Called treasure event"
                 this.PlaySound("Gold"))
             world.OnWumpusEncountered.Publish.Add (fun () ->
                 Object.Destroy this._agent.gameObject
-                this.PlaySound("Wumpus")
                 Debug.Log "Called Wum event"
                 _gameRunning <- false)
             world.OnGoalComplete.Publish.Add (fun () ->
                 this.PlaySound "Goal"
                 world.Reset()
-                Debug.Log "Called Goal event"
                 this.Treasure <- (downcast GameObject.Instantiate(WumpusPrefabs.["Treasure"],
                                                         new Vector3(this.GoldPosition.x, YPosition, this.GoldPosition.y),
                                                         Quaternion.Euler(0.0f, 180.0f, 0.0f))
