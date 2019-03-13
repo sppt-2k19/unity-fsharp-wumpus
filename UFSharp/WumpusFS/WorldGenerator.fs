@@ -1,6 +1,7 @@
 
 namespace WumpusFS.WG
 
+    open System.IO
     open System
     open System.Collections.Generic
     open UnityEngine
@@ -65,7 +66,21 @@ namespace WumpusFS.WG
         
         
         let mutable _gameRunning = true
+        static let mutable LogFile = null
         
+        //Logging
+        static member OpenLogFile(filename) =
+            let curDir = Directory.GetCurrentDirectory()
+            let fullpath = if Application.isEditor then Path.Combine(curDir, filename) else Path.Combine(curDir, "..", filename)
+            if File.Exists fullpath then
+                Debug.Log "Deleting old result file"
+                File.Delete fullpath
+                
+            LogFile <- new StreamWriter(fullpath) 
+        
+        static member CloseLogFile() =
+            LogFile.Flush()
+            LogFile.Close()
             
             
         //Local methods
@@ -114,6 +129,7 @@ namespace WumpusFS.WG
         
         member this.Start() =
             let mode = if Application.isEditor then "editor" else "release"
+            sprintf "Wumpus unity F# (%s).csv" mode |> UnityWorldGen.OpenLogFile
             world.Initialize(List.ofSeq this.WumpusPositions, List.ofSeq this.PitPositions, this.GoldPosition)
             this.CreateWorldPlatform()
             this._agent <- (downcast GameObject.Instantiate(WumpusPrefabs.["Agent"],
@@ -137,7 +153,6 @@ namespace WumpusFS.WG
                 this.PlaySound("Gold"))
             world.OnWumpusEncountered.Publish.Add (fun () ->
                 Object.Destroy this._agent.gameObject
-                Debug.Log "Called Wum event"
                 _gameRunning <- false)
             world.OnGoalComplete.Publish.Add (fun () ->
                 this.PlaySound "Goal"
@@ -157,9 +172,9 @@ namespace WumpusFS.WG
                 if UpdateTimer > UpdateTimeSecs then
                     let t = DateTime.UtcNow
                     world.Iterate()
-                    UpdateTimer <- 0.0f
                     let runTime = (DateTime.UtcNow.Subtract(t).TotalMilliseconds * 100000.0)
-                    //Log LogFile.WriteLine($"{iterationNumber};{t.Elapsed.TotalMilliseconds};{comment}");
+                    UpdateTimer <- 0.0f
+                    sprintf "%d;%.0f;%s" iterationNumber runTime comment |> LogFile.WriteLine
                     comment <- ""
                     iterationNumber <- iterationNumber + 1
                 else
@@ -169,6 +184,8 @@ namespace WumpusFS.WG
                 
             
                 
+        member this.OnDestroy() =
+            UnityWorldGen.CloseLogFile()
             
         
         
