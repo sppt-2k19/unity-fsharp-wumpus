@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="384eb916-4ccf-437e-b649-b0cd70b013b0" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WumpusFS/Library.fs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+              <folding>
+                <marker date="1551444191562" expanded="true" signature="32:61" ph=") =  ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WumpusFS/Agent.fs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+              <folding>
+                <marker date="1552046483984" expanded="true" signature="48:731" ph=") as self = ..." />
+                <marker date="1552046483984" expanded="true" signature="236:249" ph=" = ..." />
+                <marker date="1552046483984" expanded="true" signature="282:565" ph=" = ..." />
+                <marker date="1552046483984" expanded="true" signature="401:565" ph=" then ..." />
+                <marker date="1552046483984" expanded="true" signature="613:731" ph=" = ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WumpusFS/WorldGenerator.fs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="155" selection-start-line="155" selection-end-line="155" />
+              <folding>
+                <marker date="1552471377020" expanded="false" signature="33:263" ph="..." />
+                <marker date="1552471377020" expanded="true" signature="307:383" ph="= ..." />
+                <marker date="1552471377020" expanded="true" signature="420:8003" ph=") = ..." />
+                <marker date="1552471377020" expanded="true" signature="2032:2418" ph=" = ..." />
+                <marker date="1552471377020" expanded="true" signature="2256:2351" ph=" then ..." />
+                <marker date="1552471377020" expanded="true" signature="2465:2523" ph=" = ..." />
+                <marker date="1552471377020" expanded="true" signature="2636:2862" ph=" = ..." />
+                <marker date="1552471377020" expanded="true" signature="2922:4129" ph=" = ..." />
+                <marker date="1552471377020" expanded="true" signature="2937:4129" ph="for i in 0 .. (world.WorldHeight - 1) do ..." />
+                <marker date="1552471377020" expanded="true" signature="2994:4129" ph="for j in 0 .. (world.WorldWidth - 1) do  ..." />
+                <marker date="1552471377020" expanded="true" signature="3471:4129" ph=" then ..." />
+                <marker date="1552471377020" expanded="true" signature="3744:4129" ph=" then ..." />
+                <marker date="1552471377020" expanded="true" signature="3957:4129" ph=" then ..." />
+                <marker date="1552471377020" expanded="true" signature="4190:4309" ph=" = ..." />
+                <marker date="1552471377020" expanded="true" signature="4419:4837" ph=" = ..." />
+                <marker date="1552471377020" expanded="true" signature="4577:4652" ph="for p in this.ObjectPrefabs do ..." />
+                <marker date="1552471377020" expanded="true" signature="4678:4754" ph="for se in this.SoundEffects do ..." />
+                <marker date="1552471377020" expanded="true" signature="4883:7198" ph=" = ..." />
+                <marker date="1552471377020" expanded="true" signature="5787:5972" ph=" -&gt; ..." />
+                <marker date="1552471377020" expanded="true" signature="6028:6161" ph=" -&gt; ..." />
+                <marker date="1552471377020" expanded="true" signature="6307:6394" ph=" -&gt; ..." />
+                <marker date="1552471377020" expanded="true" signature="6453:6548" ph=" -&gt; ..." />
+                <marker date="1552471377020" expanded="true" signature="6602:7197" ph=" -&gt; ..." />
+                <marker date="1552471377020" expanded="true" signature="7270:7879" ph=" = ..." />
+                <marker date="1552471377020" expanded="true" signature="7300:7879" ph=" then ..." />
+                <marker date="1552471377020" expanded="true" signature="7353:7843" ph=" then ..." />
+                <marker date="1552471377020" expanded="true" signature="7960:8003" ph=" = ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WumpusFS/Wumpus.fs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4200">
+              <caret line="203" column="29" selection-start-line="203" selection-start-column="29" selection-end-line="203" selection-end-column="29" />
+              <folding>
+                <marker date="1552470271760" expanded="false" signature="35:126" ph="..." />
+                <marker date="1552470271760" expanded="true" signature="148:223" ph=" =  ..." />
+                <marker date="1552470271760" expanded="true" signature="170:223" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="243:670" ph="= ..." />
+                <marker date="1552470271760" expanded="true" signature="711:1125" ph=") as this = ..." />
+                <marker date="1552470271760" expanded="true" signature="878:957" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="1002:1125" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="1162:5697" ph=") =  ..." />
+                <marker date="1552470271760" expanded="true" signature="1626:1658" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="1722:1850" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="1971:2136" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="2220:3347" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="2651:3347" ph="for pos in newPlacesToGo do ..." />
+                <marker date="1552470271760" expanded="true" signature="2732:3347" ph=" then  ..." />
+                <marker date="1552470271760" expanded="true" signature="2872:2973" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="3044:3148" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="3392:4568" ph=":Vector2 = ..." />
+                <marker date="1552470271760" expanded="true" signature="3432:4568" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="3473:3564" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="4009:4568" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="4191:4568" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="4662:4832" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="4882:5697" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="4999:5105" ph=" then  ..." />
+                <marker date="1552470271760" expanded="true" signature="5188:5294" ph=" then  ..." />
+                <marker date="1552470271760" expanded="true" signature="5356:5465" ph=" then  ..." />
+                <marker date="1552470271760" expanded="true" signature="5549:5658" ph=" then  ..." />
+                <marker date="1552470271760" expanded="true" signature="5727:9402" ph=") = ..." />
+                <marker date="1552470271760" expanded="true" signature="6212:6234" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="6274:6309" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="6346:6378" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="6420:6457" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="6495:6528" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="6566:6599" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="6634:6664" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="6712:6774" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="6820:6883" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="7120:7593" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="7398:7593" ph="( ..." />
+                <marker date="1552470271760" expanded="true" signature="7422:7592" ph="wum, ..." />
+                <marker date="1552470271760" expanded="true" signature="7634:7720" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="7779:7979" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="8124:8429" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="8179:8403" ph="for key in know.Keys do ..." />
+                <marker date="1552470271760" expanded="true" signature="8468:9402" ph=" = ..." />
+                <marker date="1552470271760" expanded="true" signature="8711:8764" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="8835:8997" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="8944:8997" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="9095:9149" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="9180:9234" ph=" then ..." />
+                <marker date="1552470271760" expanded="true" signature="9266:9324" ph=" then ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>k</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../wumpus-unity/Assets/Scripts/Wumpus.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../wum fs/FSharp/UFSharp/Agent.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WumpusFS/Script.fsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WumpusFS/Wumpus.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WumpusFS/Library.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../wum fs/FSharp/UFSharp/Wumpus.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WumpusFS/Agent.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../wum fs/FSharp/UFSharp/WorldGenerator.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WumpusFS/WorldGenerator.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../wum fs/FSharp/UFSharp/Default.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WumpusFS/packages.config" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/../../wum fs/FSharp/UFSharp/WorldGenerator.fs" />
+        <option value="$PROJECT_DIR$/../../wum fs/FSharp/UFSharp/Default.fs" />
+        <option value="$PROJECT_DIR$/WumpusFS/WumpusFS.fsproj" />
+        <option value="$PROJECT_DIR$/WumpusFS/Agent.fs" />
+        <option value="$PROJECT_DIR$/WumpusFS/Wumpus.fs" />
+        <option value="$PROJECT_DIR$/WumpusFS/WorldGenerator.fs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="189" />
+    <option name="y" value="178" />
+    <option name="width" value="1332" />
+    <option name="height" value="824" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="UFSharp" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="UFSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="WumpusFS" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="UFSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="WumpusFS" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="References" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/WumpusFS/import/UnityEngine.dll" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="Fsi" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="384eb916-4ccf-437e-b649-b0cd70b013b0" name="Default Changelist" comment="" />
+      <created>1551444195905</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1551444195905</updated>
+      <workItem from="1551444199879" duration="584000" />
+      <workItem from="1551444982483" duration="1380000" />
+      <workItem from="1551787883617" duration="92000" />
+      <workItem from="1551795511175" duration="19059000" />
+      <workItem from="1551879260136" duration="4644000" />
+      <workItem from="1551948150843" duration="958000" />
+      <workItem from="1551949513857" duration="255000" />
+      <workItem from="1551950468175" duration="8322000" />
+      <workItem from="1552037616132" duration="12851000" />
+      <workItem from="1552378713589" duration="19935000" />
+      <workItem from="1552465950168" duration="5099000" />
+      <workItem from="1552551054906" duration="79000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="73258000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="22" width="1936" height="1186" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23347548" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32953465" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" weight="0.32953465" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Build" order="15" visible="true" weight="0.32668567" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Errors In Solution" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="6" weight="0.32995737" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../../wum fs/FSharp/UFSharp/Agent.fs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../wum fs/FSharp/UFSharp/Wumpus.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="124" column="18" lean-forward="true" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../wum fs/FSharp/UFSharp/WorldGenerator.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../wum fs/FSharp/UFSharp/Default.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+          <folding>
+            <marker date="1551861116045" expanded="true" signature="50:229" ph="g:GameObject) as self = ..." />
+            <marker date="1551861116045" expanded="true" signature="165:182" ph=" = ..." />
+            <marker date="1551861116045" expanded="true" signature="212:229" ph=" = ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Assets/fscomp_agent.cs" />
+    <entry file="file://$PROJECT_DIR$/../../wumpus-unity/Assets/Scripts/Wumpus.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WumpusFS/WumpusFS.fsproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="732">
+          <caret line="68" column="42" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WumpusFS/packages.config">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WumpusFS/Script.fsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1551444191570" expanded="true" signature="0:114" ph="// Learn more about F## at http://fsharp.org. See the 'F## Tutorial' project ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WumpusFS/Library.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+          <folding>
+            <marker date="1551444191562" expanded="true" signature="32:61" ph=") =  ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WumpusFS/Agent.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+          <folding>
+            <marker date="1552046483984" expanded="true" signature="48:731" ph=") as self = ..." />
+            <marker date="1552046483984" expanded="true" signature="236:249" ph=" = ..." />
+            <marker date="1552046483984" expanded="true" signature="282:565" ph=" = ..." />
+            <marker date="1552046483984" expanded="true" signature="401:565" ph=" then ..." />
+            <marker date="1552046483984" expanded="true" signature="613:731" ph=" = ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WumpusFS/Wumpus.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4200">
+          <caret line="203" column="29" selection-start-line="203" selection-start-column="29" selection-end-line="203" selection-end-column="29" />
+          <folding>
+            <marker date="1552470271760" expanded="false" signature="35:126" ph="..." />
+            <marker date="1552470271760" expanded="true" signature="148:223" ph=" =  ..." />
+            <marker date="1552470271760" expanded="true" signature="170:223" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="243:670" ph="= ..." />
+            <marker date="1552470271760" expanded="true" signature="711:1125" ph=") as this = ..." />
+            <marker date="1552470271760" expanded="true" signature="878:957" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="1002:1125" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="1162:5697" ph=") =  ..." />
+            <marker date="1552470271760" expanded="true" signature="1626:1658" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="1722:1850" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="1971:2136" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="2220:3347" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="2651:3347" ph="for pos in newPlacesToGo do ..." />
+            <marker date="1552470271760" expanded="true" signature="2732:3347" ph=" then  ..." />
+            <marker date="1552470271760" expanded="true" signature="2872:2973" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="3044:3148" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="3392:4568" ph=":Vector2 = ..." />
+            <marker date="1552470271760" expanded="true" signature="3432:4568" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="3473:3564" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="4009:4568" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="4191:4568" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="4662:4832" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="4882:5697" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="4999:5105" ph=" then  ..." />
+            <marker date="1552470271760" expanded="true" signature="5188:5294" ph=" then  ..." />
+            <marker date="1552470271760" expanded="true" signature="5356:5465" ph=" then  ..." />
+            <marker date="1552470271760" expanded="true" signature="5549:5658" ph=" then  ..." />
+            <marker date="1552470271760" expanded="true" signature="5727:9402" ph=") = ..." />
+            <marker date="1552470271760" expanded="true" signature="6212:6234" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="6274:6309" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="6346:6378" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="6420:6457" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="6495:6528" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="6566:6599" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="6634:6664" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="6712:6774" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="6820:6883" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="7120:7593" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="7398:7593" ph="( ..." />
+            <marker date="1552470271760" expanded="true" signature="7422:7592" ph="wum, ..." />
+            <marker date="1552470271760" expanded="true" signature="7634:7720" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="7779:7979" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="8124:8429" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="8179:8403" ph="for key in know.Keys do ..." />
+            <marker date="1552470271760" expanded="true" signature="8468:9402" ph=" = ..." />
+            <marker date="1552470271760" expanded="true" signature="8711:8764" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="8835:8997" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="8944:8997" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="9095:9149" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="9180:9234" ph=" then ..." />
+            <marker date="1552470271760" expanded="true" signature="9266:9324" ph=" then ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WumpusFS/WorldGenerator.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
+          <folding>
+            <marker date="1552471377020" expanded="false" signature="33:263" ph="..." />
+            <marker date="1552471377020" expanded="true" signature="307:383" ph="= ..." />
+            <marker date="1552471377020" expanded="true" signature="420:8003" ph=") = ..." />
+            <marker date="1552471377020" expanded="true" signature="2032:2418" ph=" = ..." />
+            <marker date="1552471377020" expanded="true" signature="2256:2351" ph=" then ..." />
+            <marker date="1552471377020" expanded="true" signature="2465:2523" ph=" = ..." />
+            <marker date="1552471377020" expanded="true" signature="2636:2862" ph=" = ..." />
+            <marker date="1552471377020" expanded="true" signature="2922:4129" ph=" = ..." />
+            <marker date="1552471377020" expanded="true" signature="2937:4129" ph="for i in 0 .. (world.WorldHeight - 1) do ..." />
+            <marker date="1552471377020" expanded="true" signature="2994:4129" ph="for j in 0 .. (world.WorldWidth - 1) do  ..." />
+            <marker date="1552471377020" expanded="true" signature="3471:4129" ph=" then ..." />
+            <marker date="1552471377020" expanded="true" signature="3744:4129" ph=" then ..." />
+            <marker date="1552471377020" expanded="true" signature="3957:4129" ph=" then ..." />
+            <marker date="1552471377020" expanded="true" signature="4190:4309" ph=" = ..." />
+            <marker date="1552471377020" expanded="true" signature="4419:4837" ph=" = ..." />
+            <marker date="1552471377020" expanded="true" signature="4577:4652" ph="for p in this.ObjectPrefabs do ..." />
+            <marker date="1552471377020" expanded="true" signature="4678:4754" ph="for se in this.SoundEffects do ..." />
+            <marker date="1552471377020" expanded="true" signature="4883:7198" ph=" = ..." />
+            <marker date="1552471377020" expanded="true" signature="5787:5972" ph=" -&gt; ..." />
+            <marker date="1552471377020" expanded="true" signature="6028:6161" ph=" -&gt; ..." />
+            <marker date="1552471377020" expanded="true" signature="6307:6394" ph=" -&gt; ..." />
+            <marker date="1552471377020" expanded="true" signature="6453:6548" ph=" -&gt; ..." />
+            <marker date="1552471377020" expanded="true" signature="6602:7197" ph=" -&gt; ..." />
+            <marker date="1552471377020" expanded="true" signature="7270:7879" ph=" = ..." />
+            <marker date="1552471377020" expanded="true" signature="7300:7879" ph=" then ..." />
+            <marker date="1552471377020" expanded="true" signature="7353:7843" ph=" then ..." />
+            <marker date="1552471377020" expanded="true" signature="7960:8003" ph=" = ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
