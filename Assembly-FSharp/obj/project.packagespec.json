@@ -1,0 +1,42 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "C:\\Users\\Malte\\Documents\\GitHub\\unity-fsharp-wumpus\\Assembly-FSharp\\Assembly-FSharp.fsproj",
+    "projectName": "Assembly-FSharp",
+    "projectPath": "C:\\Users\\Malte\\Documents\\GitHub\\unity-fsharp-wumpus\\Assembly-FSharp\\Assembly-FSharp.fsproj",
+    "outputPath": "C:\\Users\\Malte\\Documents\\GitHub\\unity-fsharp-wumpus\\Assembly-FSharp\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netstandard2.0"
+    ],
+    "frameworks": {
+      "netstandard2.0": {
+        "projectReferences": {}
+      }
+    }
+  },
+  "frameworks": {
+    "netstandard2.0": {
+      "dependencies": {
+        "FSharp.Core": {
+          "target": "Package",
+          "version": "[4.5.2, )"
+        },
+        "NETStandard.Library": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.3, )",
+          "autoReferenced": true
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

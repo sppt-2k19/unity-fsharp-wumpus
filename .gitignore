@@ -2,6 +2,7 @@
 UFSharp/.idea
 [Ll]ibrary/
 [Tt]emp/
+build/
 
 ##Unity lib
 #[Ll]ibrary/

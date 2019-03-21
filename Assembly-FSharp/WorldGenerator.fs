@@ -38,7 +38,7 @@ namespace Wumpus
         let mutable comment = ""
         
         let mutable UpdateTimer = 0.0f
-        let mutable UpdateTimeSecs = 0.1f
+        let mutable UpdateTimeSecs = 0.5f
         let mutable iterationNumber = 0
         
         [<DefaultValue>] val mutable WumpusPositions:List<Vector2>
@@ -53,8 +53,6 @@ namespace Wumpus
         
         [<DefaultValue>] val mutable MoveAudioSrc:AudioSource
         [<DefaultValue>] val mutable EffectsAudioSrc:AudioSource
-        
-        
         
         let mutable _gameRunning = true
         static let mutable LogFile = null
@@ -119,7 +117,7 @@ namespace Wumpus
         member this.Start() =
             let mode = if Application.isEditor then "editor" else "release"
             sprintf "Wumpus unity F# (%s).csv" mode |> UnityWorldGen.OpenLogFile
-            LogFile.WriteLine "Iteration no.,Time,Comment"
+            LogFile.WriteLine "Iteration no.,Time (microseconds),Comment"
             world.Initialize(List.ofSeq this.WumpusPositions, List.ofSeq this.PitPositions, this.GoldPosition)
             this.CreateWorldPlatform()
             this._agent <- (downcast GameObject.Instantiate(WumpusPrefabs.["Agent"],
@@ -140,7 +138,8 @@ namespace Wumpus
             world.OnStenchPercepted.Publish.Add (fun () -> this.PlaySound("Stench"))
             world.OnTreasureEncountered.Publish.Add (fun () ->
                 Object.Destroy this.Treasure
-                this.PlaySound("Gold"))
+                this.PlaySound("Gold")
+                comment <- "gold")
             world.OnWumpusEncountered.Publish.Add (fun () ->
                 Object.Destroy this._agent.gameObject
                 _gameRunning <- false)
@@ -162,9 +161,9 @@ namespace Wumpus
                 if UpdateTimer > UpdateTimeSecs then
                     let t = System.Diagnostics.Stopwatch.StartNew()
                     world.Iterate()
-                    let runTime = float t.Elapsed.Ticks * ((float System.Diagnostics.Stopwatch.Frequency) / 1000000.0)
+                    let runTime = float t.Elapsed.TotalMilliseconds * 1000.0
                     UpdateTimer <- 0.0f
-                    sprintf "%d,%.0f,%s" iterationNumber runTime comment |> LogFile.WriteLine
+                    sprintf "%d,%.2f,%s" iterationNumber runTime comment |> LogFile.WriteLine
                     comment <- ""
                     iterationNumber <- iterationNumber + 1
                 else
