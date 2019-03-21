@@ -4,68 +4,98 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using UnityEditor;
 using Debug = UnityEngine.Debug;
 
 
-public class FSharpImporter : AssetPostprocessor
+public class FSharpImporter
 {
-	const bool DEBUG = true;
-	
-	private const string MenuItemRecompile = "F#/Recompile F#";
-	private const string MenuItemAutoCompile = "F#/Enable Autocompile";
-	private const string MenuItemUseDotnet = "F#/Use dotnet compiler";
-	
-	private static bool _autoRecompileEnabled = EditorPrefs.GetBool(MenuItemAutoCompile);
-	private static bool _useDotnet = EditorPrefs.GetBool(MenuItemUseDotnet);
+	public const string MenuItemRecompile = "F#/Compile F#";
+	public const string MenuItemIsDebug = "F#/Show debug information";
+	public const string MenuItemCreateFSharpProject = "F#/Create F# project";
 
-	private static readonly XNamespace Xmlns = "http://schemas.microsoft.com/developer/msbuild/2003";
+	private const string Version = "1.1.7";
+
+	private static readonly string[] IgnoredFiles = { "Assembly-FSharp.dll", "FSharp.Core.dll" };
+	
+	private static bool _compiling = false;
+	private static bool _isDebug = EditorPrefs.GetBool(MenuItemIsDebug, true);
+	
 	private static readonly Regex MatchReferences =
 		new Regex("<Reference Include=\"([^\"]+)\">\\s*<HintPath>([^<]+)<\\/HintPath>\\s*<\\/Reference>", RegexOptions.Compiled);
 
-	static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
-	{
-		if (!_autoRecompileEnabled) return;
-		if (DEBUG) Debug.Log ("Starting automatic recompilation");
-		InvokeCompiler();
-	}
+	private static bool _dotnetAvailable;
 
-	[MenuItem(MenuItemRecompile)]
-	static async void InvokeCompiler()
+	public FSharpImporter()
 	{
+		Debug.Log($" -- F# Unity-integration v. {Version} -- ");
+		_dotnetAvailable = CanExecuteCmd("dotnet", "--version");
+		if (!_dotnetAvailable)
+		{
+			Debug.Log("No build tools found :(\nRequires 'dotnet' to be installed and available in a terminal");
+		}
+		Menu.SetChecked(MenuItemIsDebug, EditorPrefs.GetBool(MenuItemIsDebug, true));
+	}
+	
+	[MenuItem(MenuItemRecompile, false, 1)]
+	public static void InvokeCompiler()
+	{
+		if (_compiling)
+		{
+			Debug.Log("Already compiling...");
+			return;
+		}
+		_compiling = true;
 		try
 		{
 			var dir = Directory.GetCurrentDirectory();
-			
 			var fsProjects = Directory.EnumerateFiles(dir, "*.fsproj", SearchOption.AllDirectories);
 			var references = ExtractUnityReferences(dir);
-
 			foreach (var project in fsProjects)
 			{
 				EnsureReferences(project, references);
 				Compile(dir, project);
 			}
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			Debug.LogError(e);
 		}
+		_compiling = false;
 	}
 	
-	[MenuItem(MenuItemAutoCompile)]
-	private static void ToggleAutoCompile()
+	[MenuItem(MenuItemRecompile, true, 1)]
+	public static bool CanInvokeCompiler()
 	{
-		_autoRecompileEnabled = !_autoRecompileEnabled;
-		Menu.SetChecked(MenuItemAutoCompile, _autoRecompileEnabled);
-		EditorPrefs.SetBool(MenuItemAutoCompile, _autoRecompileEnabled);
+		return !_compiling;
 	}
 	
-	[MenuItem(MenuItemUseDotnet)]
-	private static void ToggleDotnet()
+	[MenuItem(MenuItemIsDebug, false, 53)]
+	public static void ToggleIsDebug()
 	{
-		_useDotnet = !_useDotnet;
-		Menu.SetChecked(MenuItemUseDotnet, _useDotnet);
-		EditorPrefs.SetBool(MenuItemUseDotnet, _useDotnet);
+		_isDebug = !_isDebug;
+		Menu.SetChecked(MenuItemIsDebug, _isDebug);
+		EditorPrefs.SetBool(MenuItemIsDebug, _isDebug);
+	}
+
+	
+	[MenuItem(MenuItemCreateFSharpProject, false, 54)]
+	public static void CreateFSharpProject()
+	{
+		var dir = Directory.GetCurrentDirectory();
+		var name = "Assembly-FSharp";
+		var projectDir = Path.Combine(dir, name);
+		
+		Directory.CreateDirectory(projectDir);
+		ExecuteCmd("dotnet", $"new classlib --language F# --name \"{name}\" --output \"{projectDir}\"");
+		EnsureReferences(Path.Combine(projectDir, name + ".fsproj"), ExtractUnityReferences(dir));
+	}
+	
+	[MenuItem(MenuItemCreateFSharpProject, true, 54)]
+	public static bool CanCreateFSharpProject()
+	{
+		var projectDir = Path.Combine(Directory.GetCurrentDirectory(), "Assembly-FSharp");
+		return _dotnetAvailable && !Directory.Exists(projectDir);
 	}
 	
 	private static Lazy<ReferenceContainer> ExtractUnityReferences(string dir)
@@ -73,11 +103,15 @@ public class FSharpImporter : AssetPostprocessor
 		return new Lazy<ReferenceContainer>(() =>
 		{
 			var started = DateTime.UtcNow;
-			var unityCsProjects = Directory.EnumerateFiles(dir, "*.csproj", SearchOption.TopDirectoryOnly);
-
+			var unityCsProjects = Directory.GetFiles(dir, "*.csproj", SearchOption.TopDirectoryOnly);
 			if (!unityCsProjects.Any()) throw new FileNotFoundException("No Unity projects to copy references from found. Please add a C# script, open it, and try again");
 			
 			var allReferences = new HashSet<Reference>();
+			var csDlls = Directory.GetFiles(dir, "Assembly-CSharp.dll", SearchOption.AllDirectories);
+			var properDll = csDlls.FirstOrDefault(dll => dll.Contains("Release")) ?? csDlls.FirstOrDefault();
+
+			if (properDll != null) allReferences.Add(new Reference("Assembly-CSharp", properDll));
+			
 			foreach (var project in unityCsProjects)
 			{
 				var csProjectContent = File.ReadAllText(project);
@@ -86,10 +120,10 @@ public class FSharpImporter : AssetPostprocessor
 				{
 					var include = match.Groups[1].Value;
 					var hintPath = match.Groups[2].Value;
+					if (IgnoredFiles.Any(file => hintPath.EndsWith(file))) continue;
 					allReferences.Add(new Reference(include, hintPath));
 				}
 			}
-
 
 			var unityEngine = allReferences.FirstOrDefault(r => r.Include == "UnityEngine");
 			var unityEditor = allReferences.FirstOrDefault(r => r.Include == "UnityEditor");
@@ -97,7 +131,7 @@ public class FSharpImporter : AssetPostprocessor
 			allReferences.Remove(unityEngine);
 			allReferences.Remove(unityEditor);
 		
-			if (DEBUG) Debug.Log($"Extracting references from Unity project took {DateTime.UtcNow.Subtract(started).TotalMilliseconds:F2}ms");
+			if (_isDebug) Debug.Log($"Extracting references from Unity project took {DateTime.UtcNow.Subtract(started).TotalMilliseconds:F2}ms");
 			return new ReferenceContainer
 			{
 				UnityEngine = unityEngine,
@@ -112,32 +146,34 @@ public class FSharpImporter : AssetPostprocessor
 		var started = DateTime.UtcNow;
 		var fsProjectContent = File.ReadAllText(project);
 		
-		if (fsProjectContent.Contains("UnityEngine")) return;
-
 		var references = lazyReferenceContainer.Value;
 		var fsProjectDocument = XDocument.Parse(fsProjectContent);
+		
+		// Remove existing references
+		fsProjectDocument
+			.Descendants("ItemGroup")
+			.Where(ig => ig.FirstNode is XElement el && el.Name == "Reference")
+			.Remove();
+		
+		var unityMainReferences = new XElement("ItemGroup");
+		unityMainReferences.Add(new XElement("Reference", new XAttribute("Include", references.UnityEngine.Include),
+			new XElement("HintPath", references.UnityEngine.HintPath)));
+		unityMainReferences.Add(new XElement("Reference", new XAttribute("Include", references.UnityEditor.Include),
+			new XElement("HintPath", references.UnityEditor.HintPath)));
 
-		XElement itemGroup = new XElement(Xmlns + "ItemGroup");
-		itemGroup.Add(new XElement(Xmlns + "Reference", new XAttribute("Include", references.UnityEngine.Include),
-			new XElement(Xmlns + "HintPath", references.UnityEngine.HintPath)));
-		itemGroup.Add(new XElement(Xmlns + "Reference", new XAttribute("Include", references.UnityEditor.Include),
-			new XElement(Xmlns + "HintPath", references.UnityEditor.HintPath)));
-		fsProjectDocument.Root.Add(itemGroup);
-
-		XElement itemGroup2 = new XElement(Xmlns + "ItemGroup");
-
+		var unityAdditionalReferences = new XElement("ItemGroup");
 		foreach (var reference in references.Additional)
 		{
-			itemGroup2.Add(new XElement(Xmlns + "Reference", new XAttribute("Include", reference.Include),
-				new XElement(Xmlns + "HintPath", reference.HintPath)));
+			unityAdditionalReferences.Add(new XElement("Reference", new XAttribute("Include", reference.Include),
+				new XElement("HintPath", reference.HintPath)));
 		}
 
-		fsProjectDocument.Root.Add(itemGroup2);
+		fsProjectDocument.Root.Add(unityMainReferences);
+		fsProjectDocument.Root.Add(unityAdditionalReferences);
 		fsProjectDocument.Save(project);
 		
-		if (DEBUG) Debug.Log($"Adding references to '{Path.GetFileNameWithoutExtension(project)}' took {DateTime.UtcNow.Subtract(started).TotalMilliseconds:F2}ms");
+		if (_isDebug) Debug.Log($"Adding references to '{Path.GetFileNameWithoutExtension(project)}' took {DateTime.UtcNow.Subtract(started).TotalMilliseconds:F2}ms");
 	}
-
 	
 	private static void Compile(string unityRoot, string project)
 	{
@@ -149,8 +185,7 @@ public class FSharpImporter : AssetPostprocessor
 		var projectDllFilename = Path.GetFileNameWithoutExtension(project) + ".dll";
 		var projectDllBuildPath = Path.Combine(projectBuildDir, projectDllFilename);
 		var projectDllAssetPath = Path.Combine(unityAssetsPath, projectDllFilename);
-		var fsCoreDll = "FSharp.Core.dll";
-
+		
 		// Check if a recompilation is needed
 		var fsFiles = Directory.EnumerateFiles(projectDir, "*.fs", SearchOption.AllDirectories);	
 		var lastProjectWriteTimeUtc = File.GetLastWriteTimeUtc(projectDllAssetPath);
@@ -159,36 +194,63 @@ public class FSharpImporter : AssetPostprocessor
 		if (!File.Exists(projectDllAssetPath) || filesChanged)
 		{
 			var started = DateTime.UtcNow;
-			if (_useDotnet)
-			{
-				if (DEBUG) Debug.Log($"Compiling '{Path.GetFileNameWithoutExtension(project)}' using dotnet");
-				var cmd =
-					$"build \"{project}\" --no-dependencies --no-restore --output \"{projectBuildDir}\"";
-				Process.Start("dotnet", cmd)?.WaitForExit();
-				Debug.Log("dotnet " + cmd);
-			}
-			else
-			{
-				if (DEBUG) Debug.Log($"Compiling '{Path.GetFileNameWithoutExtension(project)}' using msbuild");
-				var cmd = $"\"{projectDir}\" -p:OutputPath=\"{projectBuildDir}\" -verbosity:quiet -maxcpucount";
-				Process.Start("msbuild", cmd)?.WaitForExit();
-			}
-			if (DEBUG) Debug.Log($"Compilation of '{Path.GetFileNameWithoutExtension(project)}' took {DateTime.UtcNow.Subtract(started).TotalMilliseconds:F2}ms");
+			var success = (false, "");
 			
-			// Copy needed dll .files
+			if (_isDebug) Debug.Log($"Compiling '{Path.GetFileNameWithoutExtension(project)}' using dotnet");
+			success = ExecuteCmd("dotnet", $"build \"{project}\" --no-dependencies --no-restore --verbosity quiet --output \"{projectBuildDir}\"");
+			
+			if (!success.Item1)
+			{
+				Debug.LogError($"Compilation using dotnet failed!\n{success.Item2}");
+				return;
+			}
+			
+			if (_isDebug) Debug.Log($"Compilation of '{Path.GetFileNameWithoutExtension(project)}' took {DateTime.UtcNow.Subtract(started).TotalMilliseconds:F2}ms");
+			
 			started = DateTime.UtcNow;
 			File.Copy(projectDllBuildPath,projectDllAssetPath, true);
 			
-			if (!File.Exists(Path.Combine(unityAssetsPath, fsCoreDll)))
-			{
-				File.Copy(Path.Combine(projectBuildDir, fsCoreDll), Path.Combine(unityAssetsPath, fsCoreDll));
-			}
-			
-			if (DEBUG) Debug.Log($"Copying files from '{Path.GetFileNameWithoutExtension(project)}' took {DateTime.UtcNow.Subtract(started).TotalMilliseconds:F2}ms");
+			if (_isDebug) Debug.Log($"Copying files from '{Path.GetFileNameWithoutExtension(project)}' took {DateTime.UtcNow.Subtract(started).TotalMilliseconds:F2}ms");
 		}
 		else
 		{
 			Debug.Log($"The F# project '{Path.GetFileNameWithoutExtension(project)}' is already up-to-date");
 		}
+	}
+
+	private static bool CanExecuteCmd(string cmd, string args)
+	{
+		try
+		{
+			var startInfo = new ProcessStartInfo(cmd)
+			{
+				WindowStyle = ProcessWindowStyle.Hidden, 
+				Arguments = args
+			};
+			Process.Start(startInfo)?.WaitForExit();
+			return true;
+		}
+		catch (FileNotFoundException)
+		{
+			return false;
+		}
+		catch (Exception)
+		{
+			return true;
+		}
+	}
+
+	private static (bool, string) ExecuteCmd(string cmd, string args)
+	{
+		var proc = Process.Start(new ProcessStartInfo(cmd)
+		{
+			WindowStyle = ProcessWindowStyle.Hidden, 
+			Arguments = args,
+			UseShellExecute = false,
+			RedirectStandardOutput = true
+		});
+		var output = proc?.StandardOutput.ReadToEnd();
+		proc?.WaitForExit();
+		return (proc?.ExitCode == 0, output);
 	}
 }
