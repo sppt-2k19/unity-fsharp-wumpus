@@ -38,7 +38,7 @@ namespace Wumpus
         let mutable comment = ""
         
         let mutable UpdateTimer = 0.0f
-        let mutable UpdateTimeSecs = 0.5f
+        let mutable UpdateTimeSecs = 0.2f
         let mutable iterationNumber = 0
         
         [<DefaultValue>] val mutable WumpusPositions:List<Vector2>

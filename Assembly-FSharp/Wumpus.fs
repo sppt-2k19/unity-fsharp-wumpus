@@ -55,18 +55,16 @@ namespace Wumpus
         
         member this.ClearTrace() =
             Trace.Clear()
-            PerceptedPlaces <- new Dictionary<Vector2, Percepts>();
-            KnowledgeOfPlaces = new Dictionary<Vector2, Knowledge>();
+            PerceptedPlaces <- new Dictionary<Vector2, Percepts>()
+            KnowledgeOfPlaces <- new Dictionary<Vector2, Knowledge>()
         
-        member this.PercieveCurrentPosition(percepts:Percepts, v:Vector2) =
+        member this.PercieveCurrentPosition(percepts:Percepts) =
             PerceptedPlaces.[this.CurrentPosition] <- percepts
             KnowledgeOfPlaces.[this.CurrentPosition] <- new Knowledge()
             
             this.FoundGold <- this.FoundGold || percepts.Glitter
             
             let newPlacesToGo = this.PossibleMoves() |> Seq.where (fun pos -> not (PerceptedPlaces.ContainsKey(pos)))
-            
-            //if Vec2.At this.CurrentPosition
             
             for pos in newPlacesToGo do
                 if KnowledgeOfPlaces.ContainsKey(pos) then 
@@ -224,7 +222,7 @@ namespace Wumpus
             if  percept.Glitter then
                 this.OnTreasureEncountered.Trigger()
             
-            this.Cat.PercieveCurrentPosition(percept, agentMove)
+            this.Cat.PercieveCurrentPosition(percept)
             
            
 

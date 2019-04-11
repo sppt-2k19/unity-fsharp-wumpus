@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Malte\\Documents\\GitHub\\unity-fsharp-wumpus\\Assembly-FSharp\\Assembly-FSharp.fsproj",
+    "projectUniqueName": "C:\\Users\\zhex\\Documents\\Projects\\unity-fsharp-wumpus\\Assembly-FSharp\\Assembly-FSharp.fsproj",
     "projectName": "Assembly-FSharp",
-    "projectPath": "C:\\Users\\Malte\\Documents\\GitHub\\unity-fsharp-wumpus\\Assembly-FSharp\\Assembly-FSharp.fsproj",
-    "outputPath": "C:\\Users\\Malte\\Documents\\GitHub\\unity-fsharp-wumpus\\Assembly-FSharp\\obj\\",
+    "projectPath": "C:\\Users\\zhex\\Documents\\Projects\\unity-fsharp-wumpus\\Assembly-FSharp\\Assembly-FSharp.fsproj",
+    "outputPath": "C:\\Users\\zhex\\Documents\\Projects\\unity-fsharp-wumpus\\Assembly-FSharp\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

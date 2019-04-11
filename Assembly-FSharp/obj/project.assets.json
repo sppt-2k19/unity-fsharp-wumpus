@@ -83,7 +83,7 @@
   },
   "libraries": {
     "FSharp.Core/4.5.2": {
-      "sha512": "Pe3EDp9oBjQ3c3fvZAJsw7XFLHECS3zn3P7MSqsJy3sFYR6jvTgxxnCFeePR1JHiWyZ3bm+RZAjchqVYk61adA==",
+      "sha512": "apbdQOjzsjQ637kTWQuW29jqwY18jsHMyNC5A+TPJZKFEIE2cIfQWf3V7+mXrxlbX69BueYkv293/g70wuXuRw==",
       "type": "package",
       "path": "fsharp.core/4.5.2",
       "files": [
@@ -131,7 +131,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "a/iSwnRZb+LHFk49hQOyThh/ZNC3vsbZsF65XwQIb863qF6msmhdQtxGXFL28Ob2NsCz/drEj28BJd/YPpLRBg==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -281,23 +281,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Malte\\.nuget\\packages\\": {},
+    "C:\\Users\\zhex\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Malte\\Documents\\GitHub\\unity-fsharp-wumpus\\Assembly-FSharp\\Assembly-FSharp.fsproj",
+      "projectUniqueName": "C:\\Users\\zhex\\Documents\\Projects\\unity-fsharp-wumpus\\Assembly-FSharp\\Assembly-FSharp.fsproj",
       "projectName": "Assembly-FSharp",
-      "projectPath": "C:\\Users\\Malte\\Documents\\GitHub\\unity-fsharp-wumpus\\Assembly-FSharp\\Assembly-FSharp.fsproj",
-      "packagesPath": "C:\\Users\\Malte\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Malte\\Documents\\GitHub\\unity-fsharp-wumpus\\Assembly-FSharp\\obj\\",
+      "projectPath": "C:\\Users\\zhex\\Documents\\Projects\\unity-fsharp-wumpus\\Assembly-FSharp\\Assembly-FSharp.fsproj",
+      "packagesPath": "C:\\Users\\zhex\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\zhex\\Documents\\Projects\\unity-fsharp-wumpus\\Assembly-FSharp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Malte\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\zhex\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
